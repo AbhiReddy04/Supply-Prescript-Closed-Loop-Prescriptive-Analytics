@@ -1,0 +1,56 @@
+{
+    "project": "SupplyPrescript",
+    "model_type": "XGBoost",
+    "input_features": [
+        "customer_state",
+        "primary_seller_state",
+        "primary_category",
+        "item_count",
+        "product_count",
+        "seller_count",
+        "total_price",
+        "total_freight_value",
+        "total_order_value",
+        "avg_item_price",
+        "avg_product_weight_g",
+        "avg_product_length_cm",
+        "avg_product_height_cm",
+        "avg_product_width_cm",
+        "avg_shipping_limit_days",
+        "purchase_year",
+        "purchase_month",
+        "purchase_dayofweek",
+        "order_purchase_timestamp",
+        "order_estimated_delivery_date",
+        "estimated_delivery_lead_days",
+        "purchase_hour"
+    ],
+    "classification": {
+        "model": "xgboost_classifier.joblib",
+        "target": "delayed",
+        "threshold": 0.55,
+        "outputs": [
+            "delayed_probability",
+            "delayed_prediction"
+        ]
+    },
+    "regression": {
+        "model": "xgboost_regressor.joblib",
+        "target": "delivery_delay_days",
+        "outputs": [
+            "predicted_delivery_delay_days"
+        ]
+    },
+    "classification_test_metrics": {
+        "accuracy": 0.7520038695411829,
+        "precision": 0.08142493638676845,
+        "recall": 0.26750261233019856,
+        "f1": 0.12484759814679347,
+        "roc_auc": 0.6169321520923189
+    },
+    "regression_test_metrics": {
+        "mae": 4.645,
+        "rmse": 6.109,
+        "r2": 0.4639
+    }
+}
